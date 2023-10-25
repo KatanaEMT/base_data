@@ -10,32 +10,32 @@ with hw_db.connect('hw.db') as con:
 """)
 
 
-def create_product(con, product: tuple):
+def create_product(con):
+    products = [
+        ('Bed', 200.20, 100),
+        ('Bath', 400.69, 20),
+        ('TV', 3000.90, 2),
+        ('TV_SUPER', 1000.60, 1),
+        ('Teapot', 1000.80, 40),
+        ('Cooker', 100.20, 5),
+        ('Cupboard', 300.22, 5),
+        ('Freezer_SUPER', 1000.97, 20),
+        ('Fridge', 1920.99, 9),
+        ('Microwave', 2000.40, 40),
+        ('Pan', 70.60, 60),
+        ('Washing machine', 1000.29, 35),
+        ('Мыльное мыло', 40.31, 3),
+        ('мыло жидкое', 50, 50),
+        ('мыло', 60, 1),
+        ('мыло', 50, 10),
+        ('Супер мыло', 50, 10)
+    ]
     sql = """INSERT INTO products
-    (product_title, price, quantity)
-    VALUES (?, ?, ?)"""
+        (product_title, price, quantity)
+        VALUES (?, ?, ?)"""
     cursor = con.cursor()
-    cursor.execute(sql, product)
+    cursor.execute(sql, products)
     con.commit()
-
-
-create_product(con, ('Bed', 200.20, 100))
-create_product(con, ('Bath', 400.69, 20))
-create_product(con, ('TV', 3000.90, 2))
-create_product(con, ('TV_SUPER', 1000.60, 1))
-create_product(con, ('Teapot', 1000.80, 40))
-create_product(con, ('Cooker', 100.20, 5))
-create_product(con, ('Cupboard', 300.22, 5))
-create_product(con, ('Freezer_SUPER', 1000.97, 20))
-create_product(con, ('Fridge', 1920.99, 9))
-create_product(con, ('Microwave', 2000.40, 40))
-create_product(con, ('Pan', 70.60, 60))
-create_product(con, ('Washing machine', 1000.29, 35))
-create_product(con, ('Мыльное мыло', 40.31, 3))
-create_product(con, ('мыло жидкое', 50, 50))
-create_product(con, ('мыло', 60, 1))
-create_product(con, ('мыло', 50, 10))
-create_product(con, ('Супер мыло', 50, 10))
 
 
 def change_quatity(con, new_quantity, product_id):
@@ -95,3 +95,5 @@ select_all_products(con)
 
 
 con.close()
+
+#a
